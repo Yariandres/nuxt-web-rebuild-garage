@@ -1,0 +1,70 @@
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+/*
+  Web Rebuild Garage - Custom Styles
+  Garage/Industrial Aesthetic
+*/
+
+/* Custom font for "work order" elements */
+:root {
+  --font-mono: 'JetBrains Mono', 'Fira Code', ui-monospace, monospace;
+}
+
+/* Ensure dark mode by default */
+html {
+  color-scheme: dark;
+}
+
+/* Work Order styling - monospace industrial look */
+.work-order {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+}
+
+.work-order-label {
+  color: rgb(113 113 122); /* zinc-500 */
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.75rem;
+}
+
+.work-order-value {
+  color: rgb(244 244 245); /* zinc-100 */
+}
+
+/* Metric chips */
+.metric-chip {
+  background-color: rgb(24 24 27); /* zinc-900 */
+  border: 1px solid rgb(39 39 42); /* zinc-800 */
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+}
+
+.metric-improvement {
+  color: rgb(16 185 129); /* emerald-500 */
+}
+
+.metric-decline {
+  color: rgb(239 68 68); /* red-500 */
+}
+
+/* Section alternating backgrounds */
+.section-dark {
+  background-color: rgb(9 9 11); /* zinc-950 */
+}
+
+.section-darker {
+  background-color: rgb(24 24 27); /* zinc-900 */
+}
+
+/* Smooth scrolling for anchor links */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Focus styles for accessibility */
+:focus-visible {
+  outline: 2px solid rgb(245 158 11); /* amber-500 */
+  outline-offset: 2px;
+}
