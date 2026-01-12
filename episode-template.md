@@ -292,11 +292,3 @@ Add a “Chapters” section that mirrors YouTube chapters and links to headings
 ```
 
 ---
-
-## Want me to tailor this template to your exact stack?
-
-If you tell me what you’re using for the site (Nuxt Content? WordPress? Webflow? custom CMS?), I’ll convert the template into:
-
-* a **component-based layout** (sections as reusable blocks),
-* with **prefilled booking links**, and
-* an **Episodes index + tag system** (“WooCommerce”, “Performance”, “Checkout”, “DevOps”, etc.).
