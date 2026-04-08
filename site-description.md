@@ -8,33 +8,36 @@
 ## Concept
 
 **Websites = wrecked supercars** that need diagnosing and fixing.  
-**You + Yanus = a pit crew** (not a generic freelancer/agency).  
+**Yari + Yanus = a pit crew** (not a generic freelancer/agency).  
 **Episodes = content-driven trust** — like Matt Armstrong's supercar rebuild channel, but for broken websites.
 
 ---
 
 ## Tech Stack
 
-| Layer | Tech | Purpose |
-|-------|------|---------|
-| Framework | Nuxt 4.2.2 | SSR/SSG, file-based routing |
-| UI | Nuxt UI 4.3.0 | Component library + theming |
-| Content | Nuxt Content 3.10.0 | Markdown-driven episodes + pages |
-| Images | Nuxt Image 2.0.0 | Optimized images, lazy loading |
-| Styling | Tailwind CSS (via Nuxt UI) | Utility-first + design tokens |
+| Layer     | Tech                       | Purpose                          |
+| --------- | -------------------------- | -------------------------------- |
+| Framework | Nuxt 4.2.2                 | SSR/SSG, file-based routing      |
+| UI        | Nuxt UI 4.3.0              | Component library + theming      |
+| Content   | Nuxt Content 3.10.0        | Markdown-driven episodes + pages |
+| Images    | Nuxt Image 2.0.0           | Optimized images, lazy loading   |
+| Styling   | Tailwind CSS (via Nuxt UI) | Utility-first + design tokens    |
 
 ---
 
 ## Design Direction
 
 ### Voice & Vibe
+
 - **Garage aesthetic**, not corporate agency
 - UI styled like "work orders" and "repair status" panels
-- Terminology: *teardown, rebuild, test drive, pit crew, rescue sprint, work order*
+- Terminology: _teardown, rebuild, test drive, pit crew, rescue sprint, work order_
 - Before/after metrics as proof (like showing a wrecked car → finished build)
 
 ### Nuxt UI Theming
+
 Use Nuxt UI's theming system to create the garage vibe:
+
 - **Primary color**: Industrial orange or warning yellow
 - **Neutral**: Dark grays (like engine bay)
 - **Accents**: Green for success states, red for errors
@@ -44,35 +47,37 @@ Use Nuxt UI's theming system to create the garage vibe:
 
 ## Service Ladder
 
-| # | Service | Description | Entry Point |
-|---|---------|-------------|-------------|
-| 1 | **Rapid Diagnosis** | 30-45 min teardown call | Primary CTA everywhere |
-| 2 | **Rescue Sprint** | 3-10 day focused fix | After diagnosis |
-| 3 | **Pit Crew Retainer** | Ongoing monitoring | After successful sprint |
+| #   | Service               | Description             | Entry Point             |
+| --- | --------------------- | ----------------------- | ----------------------- |
+| 1   | **Rapid Diagnosis**   | 30-45 min teardown call | Primary CTA everywhere  |
+| 2   | **Rescue Sprint**     | 3-10 day focused fix    | After diagnosis         |
+| 3   | **Pit Crew Retainer** | Ongoing monitoring      | After successful sprint |
 
 ---
 
 ## Target Symptoms (Symptom Router)
 
-| Symptom | Tech Context | Owner |
-|---------|--------------|-------|
-| Slow checkout / cart abandonment | WooCommerce, scripts, cache, DB | You |
-| Core Web Vitals failing | Waterfalls, third-party scripts, assets | You |
-| Random errors / broken features | Plugin conflicts, JS regressions, API issues | You |
-| Admin dashboard slow | Queries, cron, bloat, server limits | You |
-| Deployments / downtime / scaling | Infra + monitoring + stability | Yanus |
+| Symptom                          | Tech Context                                 | Owner |
+| -------------------------------- | -------------------------------------------- | ----- |
+| Slow checkout / cart abandonment | WooCommerce, scripts, cache, DB              | You   |
+| Core Web Vitals failing          | Waterfalls, third-party scripts, assets      | You   |
+| Random errors / broken features  | Plugin conflicts, JS regressions, API issues | You   |
+| Admin dashboard slow             | Queries, cron, bloat, server limits          | You   |
+| Deployments / downtime / scaling | Infra + monitoring + stability               | Yanus |
 
 ---
 
 ## The Crew
 
 ### You — Lead Diagnosis / Senior Web Dev
+
 - 10+ years building and fixing web systems
 - Fast root-cause finder
 - Leads teardown, plans sprint, communicates clearly
 - **Stack**: WordPress/WooCommerce, JavaScript web apps
 
 ### Yanus — DevOps / Infrastructure Specialist
+
 - Terminal wizard
 - Performance under load, server bottlenecks
 - Monitoring, deployments, stability
@@ -85,6 +90,7 @@ Use Nuxt UI's theming system to create the garage vibe:
 Episodes are the **core content engine**. Each episode documents a real client fix like a YouTube rebuild series.
 
 ### Episode Content Structure
+
 ```
 content/
   episodes/
@@ -94,30 +100,31 @@ content/
 ```
 
 ### Episode Frontmatter Schema
+
 ```yaml
 ---
-title: "The checkout that killed revenue"
+title: 'The checkout that killed revenue'
 number: 12
-slug: "slow-woocommerce-checkout"
-symptom: "12s checkout load → drop-offs"
-rootCause: "Unoptimized DB queries + render-blocking scripts"
-result: "2.1s checkout, fewer abandons"
-stack: "woocommerce"
-tags: ["checkout", "performance", "woocommerce"]
-severity: "revenue-leak"
-crew: ["you", "yanus"]
-youtubeId: "abc123xyz"
-thumbnail: "/episodes/ep12-thumb.jpg"
+slug: 'slow-woocommerce-checkout'
+symptom: '12s checkout load → drop-offs'
+rootCause: 'Unoptimized DB queries + render-blocking scripts'
+result: '2.1s checkout, fewer abandons'
+stack: 'woocommerce'
+tags: ['checkout', 'performance', 'woocommerce']
+severity: 'revenue-leak'
+crew: ['you', 'yanus']
+youtubeId: 'abc123xyz'
+thumbnail: '/episodes/ep12-thumb.jpg'
 publishedAt: 2024-01-15
 metrics:
   before:
-    checkoutLoad: "12s"
-    lcp: "8.2s"
-    errorRate: "3.2%"
+    checkoutLoad: '12s'
+    lcp: '8.2s'
+    errorRate: '3.2%'
   after:
-    checkoutLoad: "2.1s"
-    lcp: "2.4s"
-    errorRate: "0.1%"
+    checkoutLoad: '2.1s'
+    lcp: '2.4s'
+    errorRate: '0.1%'
 ---
 ```
 
@@ -175,34 +182,34 @@ public/
 
 ## Nuxt UI Components Mapping
 
-| Section | Nuxt UI Components |
-|---------|-------------------|
-| Top Bar | `UBanner` or custom `UContainer` |
-| Header | `UHeader`, `UNavigationMenu`, `UButton` |
-| Hero | `UContainer`, `UButton`, `UBadge` |
-| Symptom Router | `UCard`, `UButton` (as cards) |
-| What You Get | `UCard`, `UList` |
-| The Method | `UCard` (3-column grid) |
-| Episodes Grid | `UCard`, `UBadge`, `ULink` |
-| Metrics | `UBadge`, `UMeter` or custom chips |
-| Crew | `UCard`, `UAvatar` |
-| Services | `UCard`, `UButton` |
-| After You Book | `UTimeline` or numbered list |
-| FAQ | `UAccordion` |
-| Final CTA | `UContainer`, `UButton` |
+| Section        | Nuxt UI Components                      |
+| -------------- | --------------------------------------- |
+| Top Bar        | `UBanner` or custom `UContainer`        |
+| Header         | `UHeader`, `UNavigationMenu`, `UButton` |
+| Hero           | `UContainer`, `UButton`, `UBadge`       |
+| Symptom Router | `UCard`, `UButton` (as cards)           |
+| What You Get   | `UCard`, `UList`                        |
+| The Method     | `UCard` (3-column grid)                 |
+| Episodes Grid  | `UCard`, `UBadge`, `ULink`              |
+| Metrics        | `UBadge`, `UMeter` or custom chips      |
+| Crew           | `UCard`, `UAvatar`                      |
+| Services       | `UCard`, `UButton`                      |
+| After You Book | `UTimeline` or numbered list            |
+| FAQ            | `UAccordion`                            |
+| Final CTA      | `UContainer`, `UButton`                 |
 
 ---
 
 ## Key Pages
 
-| Route | Purpose |
-|-------|---------|
-| `/` | Homepage (all sections) |
-| `/episodes` | Episode listing with filters |
-| `/episodes/[slug]` | Individual episode page |
-| `/services` | Detailed service pages |
-| `/crew` | About the team |
-| `/book` | Redirect to Cal.com or booking widget |
+| Route              | Purpose                               |
+| ------------------ | ------------------------------------- |
+| `/`                | Homepage (all sections)               |
+| `/episodes`        | Episode listing with filters          |
+| `/episodes/[slug]` | Individual episode page               |
+| `/services`        | Detailed service pages                |
+| `/crew`            | About the team                        |
+| `/book`            | Redirect to Cal.com or booking widget |
 
 ---
 
