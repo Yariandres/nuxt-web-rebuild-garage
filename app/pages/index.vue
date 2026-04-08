@@ -176,296 +176,274 @@ const faqItems = ref<FaqItem[]>([
 </script>
 
 <template>
-  <div>
-    <!-- Hero Section -->
-    <section class="py-20 lg:py-32">
-      <UContainer>
-        <div class="grid lg:grid-cols-2 gap-12 items-center">
-          <!-- Left: Copy -->
-          <div>
-            <h1
-              class="text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 leading-tight"
-            >
-              Teardown → Fix → Test drive.
-              <span class="text-amber-500 block"
-                >That's how we rescue websites.</span
-              >
-            </h1>
-
-            <p class="text-lg text-zinc-400 mb-8 max-w-xl">
-              I'm a senior web developer (10+ years) who finds the
-              <em>real</em> cause fast — whether it's WordPress/WooCommerce or a
-              JavaScript web app. When the problem goes deeper, I bring in
-              <strong class="text-zinc-200">Yanus</strong>, our DevOps
-              specialist. Together, we move fast — and the fix sticks.
-            </p>
-
-            <div class="flex flex-wrap gap-4 mb-6">
-              <UButton to="/book" size="xl" color="primary">
-                Book a Rapid Diagnosis
-              </UButton>
-              <UButton to="/episodes" size="xl" variant="outline">
-                See Episodes (before/after)
-              </UButton>
-            </div>
-
-            <p class="text-sm text-zinc-500">
-              No "generic audit PDF." You leave the call with a clear fix plan
-              and next steps.
-            </p>
-          </div>
-
-          <!-- Right: Work Order Visual -->
-          <div class="hidden lg:block">
-            <WorkOrder
-              title="Repair Status"
-              :items="[
-                {
-                  label: 'Incoming',
-                  value: 'Checkout slow → cart abandonment',
-                  status: 'pending',
-                },
-                {
-                  label: 'Status',
-                  value: 'Teardown in progress',
-                  status: 'in-progress',
-                },
-                {
-                  label: 'Result',
-                  value: 'Load time ↓, conversion ↑',
-                  status: 'success',
-                },
-              ]"
-            />
-          </div>
-        </div>
-      </UContainer>
-    </section>
-
-    <!-- Symptom Router Section -->
-    <section id="symptoms" class="py-20 bg-zinc-900">
-      <UContainer>
-        <div class="text-center mb-12">
-          <h2 class="text-3xl lg:text-4xl font-bold mb-4">
-            What's going on with your site?
-          </h2>
-          <p class="text-zinc-400 max-w-2xl mx-auto">
-            Pick the symptom. I'll tell you what it usually means and what we
-            check first.
-          </p>
-        </div>
-
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-10">
-          <NuxtLink
-            v-for="symptom in symptoms"
-            :key="symptom.tag"
-            :to="`/book?symptom=${symptom.tag}`"
-            class="block"
-          >
-            <UCard
-              class="h-full hover:border-amber-500/50 transition-colors cursor-pointer group"
-            >
-              <div class="flex items-start gap-3">
-                <UIcon
-                  :name="symptom.icon"
-                  class="text-amber-500 size-6 shrink-0 mt-1"
-                />
-                <div>
-                  <h3
-                    class="font-semibold mb-1 group-hover:text-amber-500 transition-colors"
-                  >
-                    {{ symptom.title }}
-                  </h3>
-                  <p class="text-sm text-zinc-500">{{ symptom.detail }}</p>
-                </div>
-              </div>
-            </UCard>
-          </NuxtLink>
-        </div>
-
-        <div class="text-center">
-          <UButton to="/book" size="lg" color="primary">
-            Book Rapid Diagnosis →
-            <span class="text-amber-200/70 ml-1">(30–45 minutes)</span>
-          </UButton>
-        </div>
-      </UContainer>
-    </section>
-
-    <!-- What You Get Section -->
-    <section class="py-20">
-      <UContainer>
-        <div class="max-w-3xl mx-auto">
-          <h2 class="text-3xl lg:text-4xl font-bold mb-10 text-center">
-            Rapid Diagnosis isn't a sales call. It's a teardown.
-          </h2>
-
-          <ul class="space-y-4 mb-8">
-            <li
-              v-for="(item, index) in deliverables"
-              :key="index"
-              class="flex gap-4 items-start"
-            >
-              <UIcon
-                name="i-lucide-check-circle-2"
-                class="text-emerald-500 size-6 shrink-0 mt-0.5"
-              />
-              <span class="text-zinc-300" v-html="item" />
-            </li>
-          </ul>
-
-          <p class="text-sm text-zinc-500 text-center">
-            If we run a Rescue Sprint, we can credit the diagnosis fee toward
-            the sprint.
-          </p>
-        </div>
-      </UContainer>
-    </section>
-
-    <!-- The Method Section -->
-    <section class="py-20 bg-zinc-900">
-      <UContainer>
-        <h2 class="text-3xl lg:text-4xl font-bold mb-12 text-center">
-          Our method:
-          <span class="text-amber-500">Teardown → Fix → Test Drive</span>
+  <!-- Hero Section -->
+  <UContainer>
+    <div class="grid lg:grid-cols-1 gap-12 items-center min-h-screen">
+      <!-- Left: Copy -->
+      <section class="flex flex-col items-center gap-12">
+        <h1 class="text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight">
+          Issue → Fix → Result.
+        </h1>
+        <h2
+          class="flex justify-end max-w-3xl font-bold text-6xl text-center text-amber-500"
+        >
+          That's how help businesses multiply sales.
         </h2>
 
-        <div class="grid md:grid-cols-3 gap-8 mb-12">
-          <UCard v-for="(step, index) in methodSteps" :key="step.title">
-            <div class="flex items-center gap-3 mb-4">
-              <span class="text-3xl font-bold text-amber-500 font-mono">{{
-                index + 1
-              }}</span>
-              <h3 class="font-semibold text-lg">{{ step.title }}</h3>
-            </div>
-            <p class="text-zinc-400">{{ step.description }}</p>
-          </UCard>
+        <!-- Right: Work Order Visual -->
+        <div class="w-full max-w-2xl">
+          <WorkOrder
+            title="Repair Status"
+            :items="[
+              {
+                label: 'Incoming',
+                value: 'Checkout slow → cart abandonment',
+                status: 'pending',
+              },
+              {
+                label: 'Status',
+                value: 'Teardown in progress',
+                status: 'in-progress',
+              },
+              {
+                label: 'Result',
+                value: 'Load time ↓, conversion ↑',
+                status: 'success',
+              },
+            ]"
+          />
         </div>
 
-        <div class="text-center">
-          <UButton to="/book" variant="outline">
-            Want us to do a teardown on your site? Book Rapid Diagnosis →
-          </UButton>
-        </div>
-      </UContainer>
-    </section>
+        <UButton to="/book" size="xl" color="primary">
+          Book a Rapid Diagnosis
+        </UButton>
+      </section>
+    </div>
+  </UContainer>
 
-    <!-- Crew Section -->
-    <section class="py-20">
-      <UContainer>
-        <h2 class="text-3xl lg:text-4xl font-bold mb-4 text-center">
-          You're not hiring a freelancer.
+  <!-- Symptom Router Section -->
+  <section id="symptoms" class="py-20 bg-zinc-900">
+    <UContainer>
+      <div class="text-center mb-12">
+        <h2 class="text-3xl lg:text-4xl font-bold mb-4">
+          What's going on with your site?
         </h2>
-        <p class="text-xl text-amber-500 mb-12 text-center">
-          You're getting a pit crew.
+        <p class="text-zinc-400 max-w-2xl mx-auto">
+          Pick the symptom. I'll tell you what it usually means and what we
+          check first.
         </p>
+      </div>
 
-        <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-10">
-          <UCard v-for="member in crew" :key="member.name">
-            <div class="flex gap-4">
-              <div
-                class="size-16 rounded-full bg-zinc-800 flex items-center justify-center shrink-0"
-              >
-                <UIcon :name="member.icon" class="size-8 text-amber-500" />
-              </div>
-              <div>
-                <h3 class="font-bold text-lg">{{ member.name }}</h3>
-                <p class="text-sm text-amber-500 mb-3">{{ member.role }}</p>
-                <p class="text-zinc-400 text-sm">{{ member.bio }}</p>
-              </div>
-            </div>
-          </UCard>
-        </div>
-
-        <p class="text-center text-zinc-400 mb-8 max-w-2xl mx-auto">
-          I don't pretend to be a one-person universe. We fix problems faster
-          because we're a team.
-        </p>
-
-        <div class="text-center">
-          <UButton to="/book" color="primary" size="lg">
-            Book a Rapid Diagnosis →
-          </UButton>
-        </div>
-      </UContainer>
-    </section>
-
-    <!-- Services Section -->
-    <section class="py-20 bg-zinc-900">
-      <UContainer>
-        <h2 class="text-3xl lg:text-4xl font-bold mb-12 text-center">
-          How you can work with us
-        </h2>
-
-        <div class="grid md:grid-cols-3 gap-8">
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-10">
+        <NuxtLink
+          v-for="symptom in symptoms"
+          :key="symptom.tag"
+          :to="`/book?symptom=${symptom.tag}`"
+          class="block"
+        >
           <UCard
-            v-for="service in services"
-            :key="service.name"
-            class="flex flex-col"
+            class="h-full hover:border-amber-500/50 transition-colors cursor-pointer group"
           >
-            <template #header>
-              <div class="flex items-center gap-3">
-                <UBadge color="primary" variant="subtle">{{
-                  service.step
-                }}</UBadge>
-                <h3 class="font-bold">{{ service.name }}</h3>
+            <div class="flex items-start gap-3">
+              <UIcon
+                :name="symptom.icon"
+                class="text-amber-500 size-6 shrink-0 mt-1"
+              />
+              <div>
+                <h3
+                  class="font-semibold mb-1 group-hover:text-amber-500 transition-colors"
+                >
+                  {{ symptom.title }}
+                </h3>
+                <p class="text-sm text-zinc-500">{{ symptom.detail }}</p>
               </div>
-            </template>
-
-            <p class="text-zinc-400 flex-1">{{ service.description }}</p>
-
-            <template #footer>
-              <UButton
-                :to="service.to"
-                :variant="service.primary ? 'solid' : 'outline'"
-                :color="service.primary ? 'primary' : 'neutral'"
-                block
-              >
-                {{ service.cta }}
-              </UButton>
-            </template>
+            </div>
           </UCard>
-        </div>
-      </UContainer>
-    </section>
+        </NuxtLink>
+      </div>
 
-    <!-- FAQ Section -->
-    <section id="faq" class="py-20">
-      <UContainer>
-        <h2 class="text-3xl lg:text-4xl font-bold mb-12 text-center">FAQ</h2>
+      <div class="text-center">
+        <UButton to="/book" size="lg" color="primary">
+          Book Rapid Diagnosis →
+          <span class="text-amber-200/70 ml-1">(30–45 minutes)</span>
+        </UButton>
+      </div>
+    </UContainer>
+  </section>
 
-        <div class="max-w-3xl mx-auto">
-          <UAccordion :items="faqItems" />
-        </div>
-      </UContainer>
-    </section>
+  <!-- What You Get Section -->
+  <section class="py-20">
+    <UContainer>
+      <div class="max-w-3xl mx-auto">
+        <h2 class="text-3xl lg:text-4xl font-bold mb-10 text-center">
+          Rapid Diagnosis isn't a sales call. It's a teardown.
+        </h2>
 
-    <!-- Final CTA Section -->
-    <section class="py-24 bg-zinc-900">
-      <UContainer>
-        <div class="text-center max-w-2xl mx-auto">
-          <h2 class="text-4xl lg:text-5xl font-bold mb-6">
-            Ready for a teardown?
-          </h2>
-          <p class="text-lg text-zinc-400 mb-10">
-            If your site is bleeding performance or revenue, don't guess. Let's
-            diagnose it properly.
-          </p>
+        <ul class="space-y-4 mb-8">
+          <li
+            v-for="(item, index) in deliverables"
+            :key="index"
+            class="flex gap-4 items-start"
+          >
+            <UIcon
+              name="i-lucide-check-circle-2"
+              class="text-emerald-500 size-6 shrink-0 mt-0.5"
+            />
+            <span class="text-zinc-300" v-html="item" />
+          </li>
+        </ul>
 
-          <div class="flex flex-wrap justify-center gap-4 mb-8">
-            <UButton to="/book" size="xl" color="primary">
-              Book Rapid Diagnosis
-            </UButton>
-            <UButton to="/episodes" size="xl" variant="outline">
-              Browse Episodes
-            </UButton>
+        <p class="text-sm text-zinc-500 text-center">
+          If we run a Rescue Sprint, we can credit the diagnosis fee toward the
+          sprint.
+        </p>
+      </div>
+    </UContainer>
+  </section>
+
+  <!-- The Method Section -->
+  <section class="py-20 bg-zinc-900">
+    <UContainer>
+      <h2 class="text-3xl lg:text-4xl font-bold mb-12 text-center">
+        Our method:
+        <span class="text-amber-500">Teardown → Fix → Test Drive</span>
+      </h2>
+
+      <div class="grid md:grid-cols-3 gap-8 mb-12">
+        <UCard v-for="(step, index) in methodSteps" :key="step.title">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="text-3xl font-bold text-amber-500 font-mono">{{
+              index + 1
+            }}</span>
+            <h3 class="font-semibold text-lg">{{ step.title }}</h3>
           </div>
+          <p class="text-zinc-400">{{ step.description }}</p>
+        </UCard>
+      </div>
 
-          <p class="text-sm text-zinc-500">
-            Typically, you'll know the real cause within the first call.
-          </p>
+      <div class="text-center">
+        <UButton to="/book" variant="outline">
+          Want us to do a teardown on your site? Book Rapid Diagnosis →
+        </UButton>
+      </div>
+    </UContainer>
+  </section>
+
+  <!-- Crew Section -->
+  <section class="py-20">
+    <UContainer>
+      <h2 class="text-3xl lg:text-4xl font-bold mb-4 text-center">
+        You're not hiring a freelancer.
+      </h2>
+      <p class="text-xl text-amber-500 mb-12 text-center">
+        You're getting a pit crew.
+      </p>
+
+      <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-10">
+        <UCard v-for="member in crew" :key="member.name">
+          <div class="flex gap-4">
+            <div
+              class="size-16 rounded-full bg-zinc-800 flex items-center justify-center shrink-0"
+            >
+              <UIcon :name="member.icon" class="size-8 text-amber-500" />
+            </div>
+            <div>
+              <h3 class="font-bold text-lg">{{ member.name }}</h3>
+              <p class="text-sm text-amber-500 mb-3">{{ member.role }}</p>
+              <p class="text-zinc-400 text-sm">{{ member.bio }}</p>
+            </div>
+          </div>
+        </UCard>
+      </div>
+
+      <p class="text-center text-zinc-400 mb-8 max-w-2xl mx-auto">
+        I don't pretend to be a one-person universe. We fix problems faster
+        because we're a team.
+      </p>
+
+      <div class="text-center">
+        <UButton to="/book" color="primary" size="lg">
+          Book a Rapid Diagnosis →
+        </UButton>
+      </div>
+    </UContainer>
+  </section>
+
+  <!-- Services Section -->
+  <section class="py-20 bg-zinc-900">
+    <UContainer>
+      <h2 class="text-3xl lg:text-4xl font-bold mb-12 text-center">
+        How you can work with us
+      </h2>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <UCard
+          v-for="service in services"
+          :key="service.name"
+          class="flex flex-col"
+        >
+          <template #header>
+            <div class="flex items-center gap-3">
+              <UBadge color="primary" variant="subtle">{{
+                service.step
+              }}</UBadge>
+              <h3 class="font-bold">{{ service.name }}</h3>
+            </div>
+          </template>
+
+          <p class="text-zinc-400 flex-1">{{ service.description }}</p>
+
+          <template #footer>
+            <UButton
+              :to="service.to"
+              :variant="service.primary ? 'solid' : 'outline'"
+              :color="service.primary ? 'primary' : 'neutral'"
+              block
+            >
+              {{ service.cta }}
+            </UButton>
+          </template>
+        </UCard>
+      </div>
+    </UContainer>
+  </section>
+
+  <!-- FAQ Section -->
+  <section id="faq" class="py-20">
+    <UContainer>
+      <h2 class="text-3xl lg:text-4xl font-bold mb-12 text-center">FAQ</h2>
+
+      <div class="max-w-3xl mx-auto">
+        <UAccordion :items="faqItems" />
+      </div>
+    </UContainer>
+  </section>
+
+  <!-- Final CTA Section -->
+  <section class="py-24 bg-zinc-900">
+    <UContainer>
+      <div class="text-center max-w-2xl mx-auto">
+        <h2 class="text-4xl lg:text-5xl font-bold mb-6">
+          Ready for a teardown?
+        </h2>
+        <p class="text-lg text-zinc-400 mb-10">
+          If your site is bleeding performance or revenue, don't guess. Let's
+          diagnose it properly.
+        </p>
+
+        <div class="flex flex-wrap justify-center gap-4 mb-8">
+          <UButton to="/book" size="xl" color="primary">
+            Book Rapid Diagnosis
+          </UButton>
+          <UButton to="/episodes" size="xl" variant="outline">
+            Browse Episodes
+          </UButton>
         </div>
-      </UContainer>
-    </section>
-  </div>
+
+        <p class="text-sm text-zinc-500">
+          Typically, you'll know the real cause within the first call.
+        </p>
+      </div>
+    </UContainer>
+  </section>
 </template>
